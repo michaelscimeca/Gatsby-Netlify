@@ -52,7 +52,7 @@ module.exports = {
         dataset: process.env.GATSBY_SANITY_DATASET,
         watchMode: true,
         graphqlTag: 'default',
-        // token: process.env.SANITY_TOKEN,
+        token: process.env.GATSBY_SANITY_TOKEN,
       },
     },
     `gatsby-plugin-graphql-loader`,

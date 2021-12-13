@@ -1,6 +1,6 @@
 import * as React from "react";
-import Seo from "../../components/seo/seo";
-import GsapLink from '../../components/utility/gsapLink';
+import Seo from "../components/seo/seo";
+import GsapLink from '../components/utility/gsapLink';
 
 const showCasePage = (data) => {
   const { pageContext } = data;

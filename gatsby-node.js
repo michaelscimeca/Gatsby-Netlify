@@ -1,6 +1,110 @@
 exports.createPages = async function ({ actions, graphql }) {
   const page = await graphql(`{
     allSanityPage {
+       edges {
+         node {
+           id
+           title
+           slug {
+             _key
+             _type
+             current
+           }
+           headline
+           _rawContent
+           _key
+           content {
+             _rawChildren
+             list
+             style
+           }
+           hero {
+             asset {
+               path
+               gatsbyImageData
+               children {
+                 ... on ImageSharp {
+                   id
+                   fixed {
+                     base64
+                     tracedSVG
+                     aspectRatio
+                     srcWebp
+                     srcSetWebp
+                     originalName
+                   }
+                 }
+               }
+             }
+           }
+           dynamicSection {
+             ... on SanityImageText {
+               _rawContent
+               _key
+               content {
+                 _rawChildren
+                 list
+                 style
+               }
+               image {
+                 asset {
+                   gatsbyImageData(aspectRatio: 1.5)
+                   children {
+                     ... on ImageSharp {
+                       id
+                       fixed {
+                         base64
+                         tracedSVG
+                         aspectRatio
+                         srcWebp
+                         srcSetWebp
+                         originalName
+                       }
+                     }
+                   }
+                 }
+               }
+               layout
+             }
+             ... on SanityBoxRepeater {
+               _key
+               _type
+               _rawRepeater
+               repeater {
+                 _key
+                 _rawFeaturedImage
+                 _rawParagraph
+                 featuredImage {
+                   _key
+                   _type
+                   _rawAsset
+                   _rawHotspot
+                   _rawCrop
+                   asset {
+                     gatsbyImageData
+                   }
+                 }
+                 layout
+                 headline
+                 paragraph {
+                   _key
+                   _rawChildren
+                   children {
+                     _key
+                     _type
+                     marks
+                     text
+                   }
+                   list
+                   style
+                 }
+               }
+             }
+           }
+         }
+       }
+     }
+     allSanityShowcase {
       edges {
         node {
           id
@@ -9,28 +113,6 @@ exports.createPages = async function ({ actions, graphql }) {
             _key
             _type
             current
-          }
-          headline
-          hero {
-            asset {
-              gatsbyImageData
-            }
-          }
-          dynamicSection {
-            ... on SanityImageText {
-              _rawContent
-              content {
-                _rawChildren
-                list
-                style
-              }
-              image {
-                asset {
-                  gatsbyImageData
-                }
-              }
-              layout
-            }
           }
         }
       }
@@ -41,9 +123,11 @@ exports.createPages = async function ({ actions, graphql }) {
   page.data.allSanityPage.edges.forEach(data => {
     const { current } =  data.node.slug;
     // Prevent creating page data for index
+
     if (current !== '/') {
       const { node } = data;
-      const template = require.resolve(`./src/pages/templates/page.js`);
+      const template = require.resolve(`./src/templates/page.js`);
+      console.log( node, ' ><<<<<< data')
       actions.createPage({
         path: current,
         component: template,
@@ -80,7 +164,7 @@ exports.createPages = async function ({ actions, graphql }) {
       // Prevent creating page data for index
       if (current !== '/') {
         const { node } = data;
-        const template = require.resolve(`./src/pages/templates/showcase.js`);
+        const template = require.resolve(`./src/templates/showcase.js`);
         actions.createPage({
           path:`/showcase/${current}/`,
           component: template,
