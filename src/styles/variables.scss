@@ -1,0 +1,65 @@
+@use "sass:math";
+/**
+* variables
+*/
+$em-base: 16;
+/**
+* Setup value converted
+*/
+@function em($pxval, $base: $em-base) {
+
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+
+  @return math.div($pxval, $base) * 1em;
+}
+
+@function rem($pxval, $base: $em-base) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+
+  @return math.div($pxval, $base) * 1rem;
+}
+
+/**
+* Breakpoints
+*/
+$global-min-vw: rem(640);
+$global-max-vw: rem(960);
+$global-min-vh: rem(640);
+$global-max-vh: rem(960);
+
+/**
+* Responsive
+*/
+@function f-clamp($min-value, $max-value, $min-vw: $global-min-vw, $max-vw: $global-max-vw) {
+  $factor: math.div(1, $max-vw - $min-vw) * ($max-value - $min-value);
+  $calc-value: #{if($min-value - ($min-vw * $factor) == 0, #{100vw * $factor}, calc(#{($min-value - ($min-vw * $factor))} + #{100vw * $factor}))};
+  @return clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
+}
+
+@function f-clamp-h($min-value, $max-value, $min-vh: $global-min-vh, $max-vh: $global-max-vh) {
+  $factor: math.div(1, $max-vh - $min-vh) * ($max-value - $min-value);
+  $calc-value: #{if($min-value - ($min-vh * $factor) == 0, #{100vh * $factor}, calc(#{($min-value - ($min-vh * $factor))} + #{100vh * $factor}))};
+  @return clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
+}
+
+/**
+* Hover For Non-Touch
+* 1. Simplifys Hovers for Desktop only
+*/
+@mixin hover {
+  .no-touchevents & {
+    &:hover {
+      @content;
+    }
+  }
+}

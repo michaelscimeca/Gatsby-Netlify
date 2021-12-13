@@ -1,0 +1,30 @@
+@import "variables.scss";
+// @import "fonts.scss";
+@import "scroll/locomotive";
+
+html,
+body {
+  position: relative;
+  height: 100%;
+  background-color: theme('colors.darkGray');
+  background-size: cover;
+  background-image: url('../assets/images/static/main-bg.png');
+}
+
+.object {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #3c2946;
+}
+
+#circle{
+  width: 80px;
+  height: 80px;
+  border: 1px solid #3c2946;
+  position:fixed;
+  border-radius:50%;
+}
+
+@import "sections/foudation";
+@import "sections/nav";
+@import "sections/dynamic-content";

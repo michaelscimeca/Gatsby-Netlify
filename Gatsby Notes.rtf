@@ -1,0 +1,293 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;\f2\fnil\fcharset0 HelveticaNeue-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;\red122\green201\blue237;
+}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c0\c0\c0;\cssrgb\c54464\c82763\c94392;
+}
+\margl1440\margr1440\vieww17920\viewh14320\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs48 \cf0 \cb2 OTHER\
+IN LAYOUT.JS \
+\
+
+\fs22 useBodyClass(`no`);
+\fs48 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 TouchEventdetections.js is for handling scss Hover scss function in our utility\
+\
+Set up to run a few stuff all in once \
+\
+    "dev": "tailwind-config-viewer & gatsby develop & npm --prefix ./sanity start"
+\fs48 \
+
+\fs24 \'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97
+\fs48 \
+\
+Tailwind
+\fs32\fsmilli16200 \
+
+\fs24 \
+\
+\
+Apply() to make repeated components less painful for QA in some case and for transitions its probably a good idea \
+\
+To further illustrate this if Nick wants to kill padding on a component that isn\'92t super componentize you can end up having to change that long inline css class to get everything in working order to prevent this potential bug inducer using a few classes to get the job done by using it apply. A example is in foundatin.scss\
+\
+Using theme() to further not repeat and stay consistent using default tags\
+\
+Default setup to speed up the process and stay consistent in order to use Defaults you need to have installed  require('@tailwindcss/typography')\
+https://www.themes.dev/blog/typographic-defaults-in-tailwind-css/#text-color\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf3 In order to use Typography you need to add 
+\f1 \expnd0\expndtw0\kerning0
+prose class to the container of all the elements you want to be set to the default in tailwind make sure you have   important: true, in the tailwind config to you can over ride css with inline tailwind\
+\
+https://github.com/tailwindlabs/tailwindcss-typography\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 To prevent overrides use extend \{\
+\}\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 Gatsby Seo
+\fs28 \
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 \
+Files location ( /src/compontents/header/seo.js)\
+\
+React Helmet  ( 
+\f2\b \cf3 \expnd0\expndtw0\kerning0
+gatsby-plugin-react-helmet 
+\f0\b0 \cf0 \kerning1\expnd0\expndtw0 )\
+\
+In seo.js file are merging Facebook Component & Twitter Component into the Helmet component\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+The Facebook Component is just a list of OG Facebook tags that take args for you to fill out which happens in the seo Component.\
+The Twitter Component is just a list of OG Twitter tags that take args for you to fill out which happens in the seo Component.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs36 \cf0 Default Meta data\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 Files location ( gatsby-config.js)\
+\
+To change the default go in to into Gatsby-config file to update the metadata object.\
+\
+Your favicon is also located in the gatsby-config file and requires the image to be at least 50px and should be at 512x512 since it will render that all the way down to 48px48 automatically \
+https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/\
+\
+  resolve: "gatsby-plugin-manifest",\
+      options: \{\
+        icon: "./src/assets/images/static/icon.png",\
+      \},\
+\
+\
+To update the default based on page update the desired property. Check seo.js for what you can added and if you need to added it to seo to reflect\
+\
+    <Seo\
+        title=\{page.title\}\
+        description=\{page.description\}\
+      />\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 Gatsby Images
+\fs28 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \
+If you need to control wrappers this is also where apply() would come in where you don\'92t total  control over injected code unless it allows walk throughs\
+	\
+  className=\'93image-wrapper\'94 \
+  imgClassName=\'93img-itself\'94\
+\
+\
+https://betterprogramming.pub/understand-responsive-images-through-gatsby-image-81f861b91158\
+\
+Speed color () Nate Package\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 GraphQL & Sanity\
+\
+Sanity\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 To hide fields types from content in studio, you want to set the type to object instead of document \
+Width Gatsby Image sharp and gatsby image you will need to pull out that data \
+Example: \{item.image.asset.gatsbyImageData\}
+\fs48 \
+\
+GraphQL \
+
+\fs24 You can grab files in Gatsby image via the gatsby-source-filesystem\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 \
+Sanity\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs36 \cf0 Portable Text\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 https://github.com/coreyward/react-portable-text\
+\
+Portable text takes raw format it also take serializer that handles formatting tags structors like ul, li, p extra. I create a component called textBlock.js to handle most of the work and should be a base for whatever content structors you will be adding to portable text.\
+\
+HIDDING FIELDS BASED ON OTHER VALUES\
+ hidden: (\{parent, value, layout\}) => parent.layout === 'standard' || parent.layout === 'hightlight'\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 REDUX
+\fs24 \
+\
+React redux just connects redux to react Components, Redux on it\'92s own is just an object state waiting to map state to a react component that gives you a function dispatch and state\
+\
+The provider is how you going to connect data to the component\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs26 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf3 \expnd0\expndtw0\kerning0
+ <Provider store=\{store\}>\
+    <Counter/>\
+  </Provider>\
+\cf4 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \kerning1\expnd0\expndtw0 I have create a store.js file in the state folder that handles the data that gets dispatch to it. You can create components and dispatch effects to the reducer to handle the data and give something back to you and long as you use the connect in react reduct which provide the dispatch function and is pass through hope pros to the components thats going to effect the data.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs26 \cf4 \expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf3   increment = () => \{\
+    this.props.dispatch(\{ type: 'INCREMENT' \});\
+  \}\
+  decrement = () => \{\
+    this.props.dispatch(\{ type: 'DECREMENT' \});\
+  \}\
+I\
+\pard\pardeftab720\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 Page Transitions\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \
+gatsby-plugin-transition-link\
+\
+Since we are using gatsby-plugin-transition-link to do page transitions with Gsap as a animation lib. Its imports to NOTE that the Layout components is added by the plugin and and pointed in the gatsby.config.js file\
+\
+TransitionLink components takes a few things I\'92m using Length and trigger. Trigger is setup to fire functions that are using GSAP to see the Gasp look at the pageTransitions.js file\
+\
+Locomotive issue. Because the page transitions switch between two divs on the same level locomotive doesn\'92t know to reset the height on page change since the height of the pervious container/page is still there so I use the length value to determine when it will leave the page and pass that to to pageOut Function and set a setimeout + 100ms after that pervious container/page left and fire the window.scroll.update() for locomotive to rest since it fired when the route change not when the pervious page left\
+\
+\pard\pardeftab720\sl200\sa210\partightenfactor0
+
+\f2\b\fs19\fsmilli9600 \cf3 \expnd0\expndtw0\kerning0
+TRIGGER OPTION\
+\pard\pardeftab720\sa210\partightenfactor0
+
+\f0\b0\fs38 \cf3 This takes a function with access to the DOM node of the exiting or entering page, the users mouse event, and both the full exit and entry props.
+\fs24 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf3 \
+\pard\pardeftab720\sl200\sa210\partightenfactor0
+
+\f2\b\fs19\fsmilli9600 \cf3 \expnd0\expndtw0\kerning0
+LENGTH OPTION\
+\pard\pardeftab720\sa210\partightenfactor0
+
+\f0\b0\fs38 \cf3 This is the duration in seconds of the exit and/or entry animation. If no delay is specified these will start at the same time.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf3 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\sl200\sa210\partightenfactor0
+
+\f2\b\fs19\fsmilli9600 \cf3 \expnd0\expndtw0\kerning0
+DELAY OPTION\
+\pard\pardeftab720\sa210\partightenfactor0
+
+\f0\b0\fs38 \cf3 This is the duration in seconds to delay before beginning the animation. See the\'a0{\field{\*\fldinst{HYPERLINK "https://transitionlink.tylerbarnes.ca/docs/timeline-of-events/"}}{\fldrslt timeline}}\'a0for more information on how this effects animation duration.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\
+https://transitionlink.tylerbarnes.ca/docs/transitionlink/#props-and-options\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 Creating Page based on CMS (Create a page or post)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs28 \cf0 The createPage function takes an object of data most importantly is the path, component  & node \
+     \
+const \{ node \} = data;\
+const template = require.resolve(`./src/templates/page.js`);\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs28 \cf0   actions.createPage(\{ \
+            path:`/blog/$\{current\}/`,\
+            component: template,\
+            context: \{\
+              slug: current,\
+              page: node\
+ 	 \},\
+\})
+\fs36 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 https://www.gatsbyjs.com/docs/creating-and-modifying-pages/\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs24 \cf0 \
+}
