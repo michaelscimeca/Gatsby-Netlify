@@ -37,7 +37,6 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   }
   `);
-  console.log(page)
   // Pull Data and then Run create page function to create pages and drop context based on slug
   page.data.allSanityPage.edges.forEach(data => {
     const { current } =  data.node.slug;

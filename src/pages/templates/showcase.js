@@ -4,6 +4,7 @@ import GsapLink from '../../components/utility/gsapLink';
 
 const showCasePage = (data) => {
   const { pageContext } = data;
+  console.log(pageContext, 'showcase')
   return (
     <>
     <Seo title="Showcase Page" />
@@ -11,7 +12,6 @@ const showCasePage = (data) => {
       <div className="relative grid gap-x-8 grid-cols-4 md:grid-cols-8 lg:gap-x-16 lg:grid-cols-12 mx-auto max-w-7xl">
         <div className="col-span-full lg:col-span-8 lg:col-start-2">
           <GsapLink link='/' content="Go Back" lengthOut="1" lengthIn="0" />
-          <h1>{pageContext.page.title}</h1>
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 const autoprefixer = require('autoprefixer');
-console.log('ev', process.env.GATSBY_SANITY_PROJECT_ID)
 module.exports = {
   siteMetadata: {
     title: `Red Title`,
