@@ -1,5 +1,8 @@
-require('dotenv').config();
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 const autoprefixer = require('autoprefixer');
+console.log('ev', process.env.GATSBY_SANITY_PROJECT_ID)
 module.exports = {
   siteMetadata: {
     title: `Red Title`,
@@ -47,7 +50,7 @@ module.exports = {
       resolve: "gatsby-source-sanity",
       options: {
         projectId: process.env.GATSBY_SANITY_PROJECT_ID,
-        dataset: process.env.GATSBY_SANITY_DATASET ,
+        dataset: process.env.GATSBY_SANITY_DATASET,
         watchMode: true,
         graphqlTag: 'default',
         // token: process.env.SANITY_TOKEN,
